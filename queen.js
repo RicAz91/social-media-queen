@@ -1,27 +1,55 @@
 class Queen{
   constructor(game){
-    this.x = 350
+    this.x = 250
     this.y = 100 // this will change with the jump
-    this.gravity = 10;
+    this.gravity = 0.1;
     this.velocity = 0
+    this.jumpForce = -5
   }
 
  colide(){
 
   }
 
+  
+
+
   logic(){
     //put the logic
     this.velocity += this.gravity
     this.y += this.velocity; 
-  }
+
+    if(this.y > 300){
+      this.y = 300;
+      this.velocity = 0;
+    }else if (this.y < 0){
+      this.y = 0;
+      this.velocity = 0;
+    } 
+
+   
+    
+}
+
+jumpF(){
+  this.velocity += this.jumpForce
+  
+}
+
+
 
   paint(){
     // load the image url
 const queenImage = new Image()
-const queenImageUrl = "./images/kisspng-queen-vector-graphics-portable-network-graphics-ro-mail-ru-5c7526c18229c8.2702900915511815055332.png" //direction()
+const queenImageUrl = "./images/QJump (1).png" //direction()
 queenImage.src = queenImageUrl
 queenImage.addEventListener('load', ()=>{
 context.drawImage(queenImage,this.x,this.y, 100,170)})
   }
 }
+
+
+
+
+
+
