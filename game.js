@@ -7,13 +7,14 @@ class Game{
   constructor(game){
 this.queen = new Queen(this)
 this.background = new Background(this)
+this.objects = new Objects(this)
   }
 
 paint(){
   
   this.background.paint()
   this.queen.paint()
-  
+  this.objects.paint()
 
 }
 

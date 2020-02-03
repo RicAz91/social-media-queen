@@ -8,7 +8,9 @@ runLogic(){
 
 }
 move(){
-  this.x = -100
+  
+  this.x -= 50
+  
 }
 
 paint(){
