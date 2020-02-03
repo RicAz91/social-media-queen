@@ -9,7 +9,7 @@ runLogic(){
 }
 move(){
   
-  this.x -= 50
+  this.x -= 10
   
 }
 
