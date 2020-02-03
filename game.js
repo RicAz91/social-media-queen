@@ -14,7 +14,7 @@ paint(){
   
   this.background.paint()
   this.queen.paint()
-  this.objects.paint()
+  this.objects.randomyzed()
 
 }
 
@@ -52,6 +52,7 @@ click(){
    
     if(event){
       this.background.move()
+      this.objects.move()
       console.log("click")
       
       
