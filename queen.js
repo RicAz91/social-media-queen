@@ -1,3 +1,11 @@
+const queenImage = new Image();
+const queenImageUrl = './images/QJump (1).png'; //direction()
+queenImage.src = queenImageUrl;
+
+const queenImage2 = new Image();
+const queenImage2Url = './images/QJump (2).png'
+queenImage2.src = queenImage2Url
+
 class Queen {
   constructor(game) {
     this.x = 250;
@@ -20,7 +28,7 @@ class Queen {
       this.y = 0;
       this.velocity = 0;
     }
-  }
+  } 
 
   jumpF() {
     this.velocity += this.jumpForce;
@@ -28,11 +36,11 @@ class Queen {
 
   paint() {
     // load the image url
-    const queenImage = new Image();
-    const queenImageUrl = './images/QJump (1).png'; //direction()
-    queenImage.src = queenImageUrl;
-    queenImage.addEventListener('load', () => {
+    if (this.game.key() === 32) {
       context.drawImage(queenImage, this.x, this.y, 120, 170);
-    });
+    } else {context.drawImage(queenImage2, this.x, this.y, 120, 170)
+
+      
+    }
   }
 }

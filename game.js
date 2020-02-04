@@ -1,7 +1,8 @@
 const $canvas = document.querySelector('canvas');
 
 const context = $canvas.getContext('2d');
-
+let counter = document.querySelector('h1 span');
+let counterF = document.querySelector('h1:nth-child(2) span');
 class Game {
   constructor(game) {
     this.queen = new Queen(this);
@@ -11,6 +12,8 @@ class Game {
     this.createObstacles();
     this.click();
     this.key();
+    this.likes = 0;
+    this.folowers = 0;
   }
 
   createObstacles() {
@@ -21,24 +24,70 @@ class Game {
   }
 
   collision() {
-    console.log(this.obstacles[0].x);
     // shoud be between this and that
     for (let i = 0; i < this.obstacles.length; i++) {
       let obstacleX = this.obstacles[i].x;
       let obstacleY = this.obstacles[i].y;
       let queenX = this.queen.x;
       let queenY = this.queen.y;
+
       if (
-        obstacleX > queenX &&
-        obstacleX < queenX + 120 &&
-        obstacleX + 75 < queenX &&
-        obstacleX + 75 > queenX + 120 &&
-        obstacleY < queenY &&
-        obstacleY > queenY + 170 &&
-        obstacleY + 75 > queenY &&
-        obstacleY + 75 < queenY + 170
+        //working
+        queenX + 120 > obstacleX &&
+        queenX + 120 > obstacleX + 75 &&
+        queenX < obstacleX &&
+        queenX < obstacleX + 75 &&
+        queenY < obstacleY &&
+        queenY < obstacleY + 75 &&
+        queenY + 170 > obstacleY &&
+        queenY + 170 > obstacleY + 75 &&
+        this.obstacles[i].oneRandObst == 1
+
+        // obstacleX > queenX &&
+        // obstacleX < queenX + 120 &&
+        // obstacleX + 75 > queenX &&
+        // obstacleX + 75 < queenX + 120 &&
+        // obstacleY < queenY &&
+        // obstacleY > queenY + 170 &&
+        // obstacleY + 75 > queenY &&
+        // obstacleY + 75 < queenY + 170
       ) {
-        console.log('hihih');
+        console.log('like');
+        this.likes++;
+        this.obstacles.splice([i], 1);
+        counter.innerText = this.likes;
+      } else if (
+        queenX + 120 > obstacleX &&
+        queenX + 120 > obstacleX + 75 &&
+        queenX < obstacleX &&
+        queenX < obstacleX + 75 &&
+        queenY < obstacleY &&
+        queenY < obstacleY + 75 &&
+        queenY + 170 > obstacleY &&
+        queenY + 170 > obstacleY + 75 &&
+        this.obstacles[i].oneRandObst == 2
+      ) {
+        console.log('unlike');
+        this.folowers--;
+        this.obstacles.splice([i], 1);
+        counterF.innerText = this.folowers;
+      } else if (
+        queenX + 120 > obstacleX &&
+        queenX + 120 > obstacleX + 75 &&
+        queenX < obstacleX &&
+        queenX < obstacleX + 75 &&
+        queenY < obstacleY &&
+        queenY < obstacleY + 75 &&
+        queenY + 170 > obstacleY &&
+        queenY + 170 > obstacleY + 75 &&
+        this.obstacles[i].oneRandObst == 3
+      ) {
+        console.log('folow');
+        this.folowers++;
+        this.likes += 10;
+        this.obstacles.splice([i], 1);
+        counter.innerText = this.likes;
+        counterF.innerText = this.folowers;
       }
     }
   }
@@ -106,3 +155,9 @@ function resetCanvas() {
 //     obstacle.runLogic();
 //   }
 // };
+
+function arrayRemove(arr, value) {
+  return arr.filter(function(ele) {
+    return ele != value;
+  });
+}
