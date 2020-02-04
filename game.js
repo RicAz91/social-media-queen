@@ -35,8 +35,8 @@ class Game {
 
     if (queenX < paparaziX - 40) {
       console.log(' game over');
-      gameIsRunning = false;
-      this.queen.paintd();
+
+      gameOver();
     }
   }
 
@@ -140,15 +140,14 @@ class Game {
     //setTimeout(() => this.paparazi.logic(), 1000);
   }
 
-  loop = timestamp => {
+  loop() {
     this.logic();
     this.paint();
     this.pColision();
-    if(gameIsRunning){
+    if (gameIsRunning) {
       window.requestAnimationFrame(timestamp => this.loop(timestamp));
     }
-   
-  };
+  }
 
   key() {
     window.addEventListener('keydown', event => {
@@ -176,10 +175,6 @@ class Game {
       }
     });
   }
-}
-
-function resetCanvas() {
-  context.clearRect(0, 0, 500, 700);
 }
 
 // const obstacles = [];
