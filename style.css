@@ -6,4 +6,14 @@ body{
 canvas{
   background-color: aqua;
 } 
-h1:nth-child()
+
+
+.ajust{
+  display: flex;
+  flex-direction: column;
+
+}
+.side{
+  display: flex;
+  flex-direction: row;
+}

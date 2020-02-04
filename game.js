@@ -11,11 +11,11 @@ class Game {
     this.paparazi = new Paparazi(this);
     //this.objects = new Objects(this)
     this.obstacles = [];
-    
+
     this.createObstacles();
     this.click();
     this.key();
-    
+
     this.likes = 0;
     this.folowers = 0;
   }
@@ -33,9 +33,10 @@ class Game {
     let paparaziX = this.paparazi.x + this.paparazi.width;
     let paparaziY = this.paparazi.y + this.paparazi.height;
 
-    if (queenX < paparaziX- 40) {
-      console.log(" game over");
-      
+    if (queenX < paparaziX - 40) {
+      console.log(' game over');
+      gameIsRunning = false;
+      this.queen.paintd();
     }
   }
 
@@ -142,8 +143,11 @@ class Game {
   loop = timestamp => {
     this.logic();
     this.paint();
-this.pColision();
-    window.requestAnimationFrame(timestamp => this.loop(timestamp));
+    this.pColision();
+    if(gameIsRunning){
+      window.requestAnimationFrame(timestamp => this.loop(timestamp));
+    }
+   
   };
 
   key() {

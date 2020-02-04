@@ -18,6 +18,10 @@ const queenImageC2 = new Image();
 const queenImageC2Url = './images/Qwith crown2.png';
 queenImageC2.src = queenImageC2Url;
 
+const dqueenImage = new Image();
+const dqueenImageUrl = './images/QDead.png';
+dqueenImage.src = dqueenImageUrl;
+
 class Queen {
   constructor(game) {
     this.x = 250;
@@ -62,5 +66,9 @@ class Queen {
     } else {
       context.drawImage(queenImageC2, this.x, this.y, 120, 170);
     }
+  }
+  paintd(){
+    context.drawImage(dqueenImage, this.x, this.y, 170, 170);
+
   }
 }
