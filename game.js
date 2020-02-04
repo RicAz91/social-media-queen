@@ -1,17 +1,21 @@
 const $canvas = document.querySelector('canvas');
 
 const context = $canvas.getContext('2d');
+
 let counter = document.querySelector('h1 span');
 let counterF = document.querySelector('h1:nth-child(2) span');
 class Game {
   constructor(game) {
     this.queen = new Queen(this);
     this.background = new Background(this);
+    this.paparazi = new Paparazi(this);
     //this.objects = new Objects(this)
     this.obstacles = [];
+    
     this.createObstacles();
     this.click();
     this.key();
+    
     this.likes = 0;
     this.folowers = 0;
   }
@@ -23,7 +27,19 @@ class Game {
     }
   }
 
-  collision() {
+  pColision() {
+    let queenX = this.queen.x;
+    let queenY = this.queen.y;
+    let paparaziX = this.paparazi.x + this.paparazi.width;
+    let paparaziY = this.paparazi.y + this.paparazi.height;
+
+    if (queenX < paparaziX- 40) {
+      console.log(" game over");
+      
+    }
+  }
+
+  oCollision() {
     // shoud be between this and that
     for (let i = 0; i < this.obstacles.length; i++) {
       let obstacleX = this.obstacles[i].x;
@@ -94,22 +110,39 @@ class Game {
 
   paint() {
     this.background.paint();
-    this.queen.paint();
+
+    if (this.folowers < 1) {
+      this.queen.paint();
+    } else {
+      this.queen.paintC();
+    }
+
     //this.objects.paint()
     for (let i = 0; i < this.obstacles.length; i++) {
       this.obstacles[i].paint();
     }
+
+    this.paparazi.paint();
+    // let a = (this.paparazi.x % 0.2).toFixed(2);
+    // console.log(a);
+    // if (a < 0.2) {
+    //   this.paparazi.paint();
+    // } else {
+    //   this.paparazi.paint2();
+    // }
   }
 
   logic() {
     this.queen.logic();
     //this.objects.logic()
+    this.paparazi.logic();
+    //setTimeout(() => this.paparazi.logic(), 1000);
   }
 
   loop = timestamp => {
     this.logic();
     this.paint();
-
+this.pColision();
     window.requestAnimationFrame(timestamp => this.loop(timestamp));
   };
 
@@ -126,12 +159,14 @@ class Game {
 
   click() {
     window.addEventListener('click', event => {
-      this.collision();
+      this.oCollision();
       if (event) {
         this.background.move();
         for (let i = 0; i < this.obstacles.length; i++) {
           this.obstacles[i].move();
         }
+        return true;
+
         //this.objects.move()
         console.log('click');
       }
@@ -155,9 +190,3 @@ function resetCanvas() {
 //     obstacle.runLogic();
 //   }
 // };
-
-function arrayRemove(arr, value) {
-  return arr.filter(function(ele) {
-    return ele != value;
-  });
-}

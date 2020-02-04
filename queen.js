@@ -3,8 +3,20 @@ const queenImageUrl = './images/QJump (1).png'; //direction()
 queenImage.src = queenImageUrl;
 
 const queenImage2 = new Image();
-const queenImage2Url = './images/QJump (2).png'
-queenImage2.src = queenImage2Url
+const queenImage2Url = './images/QJump (2).png';
+queenImage2.src = queenImage2Url;
+
+const queenImage3 = new Image();
+const queenImage3Url = './images/QWalk (1).png';
+queenImage3.src = queenImage3Url;
+
+const queenImageC1 = new Image();
+const queenImageC1Url = './images/Qwith crown.png';
+queenImageC1.src = queenImageC1Url;
+
+const queenImageC2 = new Image();
+const queenImageC2Url = './images/Qwith crown2.png';
+queenImageC2.src = queenImageC2Url;
 
 class Queen {
   constructor(game) {
@@ -28,7 +40,7 @@ class Queen {
       this.y = 0;
       this.velocity = 0;
     }
-  } 
+  }
 
   jumpF() {
     this.velocity += this.jumpForce;
@@ -36,11 +48,19 @@ class Queen {
 
   paint() {
     // load the image url
-    if (this.game.key() === 32) {
-      context.drawImage(queenImage, this.x, this.y, 120, 170);
-    } else {context.drawImage(queenImage2, this.x, this.y, 120, 170)
-
-      
+    if (this.y < 150) {
+      context.drawImage(queenImage2, this.x, this.y, 120, 170);
+    } else if (this.y < 250) {
+      context.drawImage(queenImage3, this.x, this.y, 120, 170);
+    } else {
+      context.drawImage(queenImage2, this.x, this.y, 120, 170);
+    }
+  }
+  paintC(){
+    if (this.y < 250) {
+      context.drawImage(queenImageC1, this.x, this.y, 120, 170);
+    } else {
+      context.drawImage(queenImageC2, this.x, this.y, 120, 170);
     }
   }
 }
