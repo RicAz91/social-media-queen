@@ -35,8 +35,7 @@ class Game {
 
     if (queenX < paparaziX - 40) {
       console.log(' game over');
-
-      gameOver();
+      gameIsRunning = false;
     }
   }
 
@@ -141,11 +140,14 @@ class Game {
   }
 
   loop() {
-    this.logic();
-    this.paint();
-    this.pColision();
+   
     if (gameIsRunning) {
+      this.logic();
+      this.paint();
+      this.pColision();
       window.requestAnimationFrame(timestamp => this.loop(timestamp));
+    } else {
+      gameOver();
     }
   }
 

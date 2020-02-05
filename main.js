@@ -13,36 +13,39 @@ function paintInst() {
   });
 }
 
+// function gameCheck(){
+//   if(gameIsRunning = false){
+//     gameOver();
+//   }
+// }
 
 function gameOver() {
-   
-    context.drawImage(gameOverImg, 0, 0, 700, 500);
-    enter()
-    
-    
-  }
+  cleanCanvas()
+  context.drawImage(gameOverImg, 0, 0, 700, 500);
+  enter();
+}
 
 function startGame() {
-  resetCanvas()
+  cleanCanvas();
   let game = new Game();
-    game.loop();
+  game.loop();
 }
 
 function enter() {
   window.addEventListener('keydown', event => {
     switch (event.keyCode) {
       case 13:
-        resetCanvas()
         startGame();
+        cleanCanvas();
         console.log('game start');
         break;
     }
   });
 }
 
-function resetCanvas() {
-  context.clearRect(0, 0, 500, 700);
-}
+const cleanCanvas = () => {
+  context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+};
 paintInst();
 
 enter();
