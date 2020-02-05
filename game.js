@@ -4,20 +4,33 @@ const context = $canvas.getContext('2d');
 
 let counter = document.querySelector('h1 span');
 let counterF = document.querySelector('h1:nth-child(2) span');
+
+let gameIsRunning = true;
+
+const gameOverImg = new Image();
+const gameOverImgURL = './images/game over.png'; //direction()
+gameOverImg.src = gameOverImgURL;
+
 class Game {
   constructor(game) {
+    this.cleanCanvas();
     this.queen = new Queen(this);
     this.background = new Background(this);
     this.paparazi = new Paparazi(this);
     //this.objects = new Objects(this)
     this.obstacles = [];
-
     this.createObstacles();
     this.click();
     this.key();
-
+    this.loop();
     this.likes = 0;
     this.folowers = 0;
+  }
+
+  gameOver() {
+    this.cleanCanvas();
+    context.drawImage(gameOverImg, 0, 0, 700, 500);
+    enter();
   }
 
   createObstacles() {
@@ -140,16 +153,18 @@ class Game {
   }
 
   loop() {
-   
     if (gameIsRunning) {
       this.logic();
       this.paint();
       this.pColision();
       window.requestAnimationFrame(timestamp => this.loop(timestamp));
     } else {
-      gameOver();
+      this.gameOver();
     }
   }
+  cleanCanvas = () => {
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+  };
 
   key() {
     window.addEventListener('keydown', event => {
