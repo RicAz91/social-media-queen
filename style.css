@@ -1,12 +1,26 @@
+
+
 body{
   display: flex;
   justify-content: center;
-  background-color: blueviolet;
+  background-image: url("./images/backgroundhtml.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 canvas{
   background-color: aqua;
 } 
 
+img{
+ 
+  width: 60px;
+padding: 20px;
+
+
+}
+.followers{
+  width: 80px
+}
 
 .ajust{
   display: flex;
@@ -14,6 +28,23 @@ canvas{
 
 }
 .side{
+  padding: 20px;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  font-size: 3em;
+  align-items: center
+}
+h1{
+  display: flex;
+  align-items: center
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

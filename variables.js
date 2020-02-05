@@ -5,11 +5,11 @@ let $counter = document.querySelector('h1 span');
 let $counterF = document.querySelector('h1:nth-child(2) span');
 
 const gameOverImg = new Image();
-const gameOverImgURL = './images/game over.png'; //direction()
+const gameOverImgURL = './images/game over.jpg'; //direction()
 gameOverImg.src = gameOverImgURL;
 
 const winImg = new Image();
-const winImgURL = './images/win.png'; //direction()
+const winImgURL = './images/win.jpg'; //direction()
 winImg.src = winImgURL;
 
 const backgroundImage = new Image();
@@ -29,7 +29,7 @@ const paparaziImage3Url = './images/PaparaziRun (3).png'; //direction()
 paparaziImage3.src = paparaziImage3Url;
 
 const instImage = new Image();
-const instImageUrl = './images/how to play.png'; //direction()
+const instImageUrl = './images/instructions.jpg'; //direction()
 instImage.src = instImageUrl;
 
 const queenImage = new Image();
@@ -55,3 +55,14 @@ queenImageC2.src = queenImageC2Url;
 const dqueenImage = new Image();
 const dqueenImageUrl = './images/QDead.png';
 dqueenImage.src = dqueenImageUrl;
+const unlikeImage = new Image();
+const unlikeImageUrl = './images/unlike.png'; //direction()
+unlikeImage.src = unlikeImageUrl;
+
+const likeImage = new Image();
+const likeImageUrl = './images/like.png'; //direction()
+likeImage.src = likeImageUrl;
+
+const followersImage = new Image();
+const followersImageUrl = './images/folow.png'; //direction()
+followersImage.src = followersImageUrl;
