@@ -19,10 +19,10 @@ function enter() {
     switch (event.keyCode) {
       case 13:
         let game = new Game();
-        gameIsRunning = true
+        game.startGame();
         console.log('game start');
         break;
     }
   });
 }
-enter()
+enter();

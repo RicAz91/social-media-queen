@@ -19,7 +19,7 @@ class Paparazi {
   }
 
   logic() {
-    let gain = 1.1;
+    let gain = 0.016;
     setTimeout(() => (this.x += gain), 1000);
 
     console.log('move');

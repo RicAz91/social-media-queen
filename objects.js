@@ -14,8 +14,11 @@ class Objects {
   constructor(x, game) {
     this.x = x;
     this.y = Math.floor(Math.random() * 400);
+    this.height = 75
+    this.width = 75
     this.obstaclesProb = [1, 1, 2, 3, 3, 1, 2, 1];
     this.oneRandObst = this.obstaclesProb[Math.floor(Math.random() * this.obstaclesProb.length)];
+  
   }
 
   logic() {
@@ -50,18 +53,18 @@ class Objects {
   move() {
     this.x -= 10;
     return this.x;
-    console.log(this.x);
+    
   }
 
   paint() {
     // load the image url
 
     if (this.oneRandObst === 1) {
-      context.drawImage(likeImage, this.x, this.y, 75, 75);
+      context.drawImage(likeImage, this.x, this.y, this.width, this.height);
     } else if (this.oneRandObst === 2) {
       context.drawImage(unlikeImage, this.x, this.y, 75, 75);
     } else if (this.oneRandObst === 3) {
-      context.drawImage(folowersImage, this.x, this.y, 75, 75);
+      context.drawImage(folowersImage, this.x, this.y, this.width, this.height);
     } else {
       console.log('ERROR');
     }
