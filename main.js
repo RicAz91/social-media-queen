@@ -1,28 +1,16 @@
-const instImage = new Image();
-const instImageUrl = './images/how to play.png'; //direction()
-instImage.src = instImageUrl;
-
-// function gameCheck(){
-//   if(gameIsRunning = false){
-//     gameOver();
-//   }
-// }
 function paintInst() {
   instImage.addEventListener('load', () => {
     context.drawImage(instImage, 0, 0, 700, 500);
   });
 }
 paintInst();
+const game = new Game();
 
-function enter() {
-  window.addEventListener('keydown', event => {
-    switch (event.keyCode) {
-      case 13:
-        let game = new Game();
-        game.startGame();
-        console.log('game start');
-        break;
-    }
-  });
-}
-enter();
+window.addEventListener('keydown', event => {
+  switch (event.keyCode) {
+    case 13:
+      game.startGame();
+      console.log('game start');
+      break;
+  }
+});

@@ -1,25 +1,15 @@
-class Background{
-  constructor(game){
-    this.x = 0
-    this.y = 0
+class Background {
+  constructor(game) {
+    this.x = 0;
+    this.y = 0;
   }
 
-runLogic(){
+  runLogic() {}
+  move() {
+    this.x -= 10;
+  }
 
-}
-move(){
-  
-  this.x -= 10
-  
-}
-
-paint(){
-  const backgroundImage = new Image()
-const backgroundImageUrl = "./images/newBackgroundQ12.jpg" //direction()
-backgroundImage.src = backgroundImageUrl
-backgroundImage.addEventListener('load', ()=>{
-context.drawImage(backgroundImage,this.x,this.y)})
-}
-
-
+  paint() {
+    context.drawImage(backgroundImage, this.x, this.y);
+  }
 }
