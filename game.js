@@ -5,9 +5,12 @@ class Game {
     this.winningObjective = 463;
     this.click();
     this.key();
+    this.sound = new Audio('/sound/BoxCat_Games_-_02_-_Mt_Fox_Shop.mp3');
+    
   }
 
   startGame() {
+    
     this.restart();
     if (!this.gameIsRunning) {
       this.gameIsRunning = !this.gameIsRunning;
@@ -18,13 +21,16 @@ class Game {
   loop(timestamp) {
     this.logic();
     this.paint();
+    this.audio()
     if (this.gameIsRunning) {
+      
       window.requestAnimationFrame(timestamp => this.loop(timestamp));
     }
   }
 
   restart() {
     this.openFullscreen();
+    
     this.sCanvasBackground = new ScanvasBackground(this);
     this.littleQueen = new SecondCanvasQueen(this);
     this.queen = new Queen(this);
@@ -41,6 +47,7 @@ class Game {
   }
 
   gameOver() {
+    
     this.gameIsRunning = !this.gameIsRunning;
   }
 
@@ -108,6 +115,16 @@ class Game {
     ctx.clearRect(0, 0, context.canvas.width, context.canvas.height);
   };
 
+  audio(){
+    if(!this.gameIsRunning){
+      this.sound.pause()
+    } else{
+      this.sound.play()
+
+    }
+    
+  
+  }
   key() {
     window.addEventListener('keydown', event => {
       if (this.gameIsRunning) {
