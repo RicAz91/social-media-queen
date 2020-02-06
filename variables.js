@@ -4,8 +4,11 @@ const context = $canvas.getContext('2d');
 const $sCanvas = document.querySelector('.small-canvas');
 const ctx = $sCanvas.getContext('2d');
 
+// const $soundBotton = document.querySelector('.sound')
 
-
+// const sound = new Sound();
+// const soundUrl = '/sound/BoxCat_Games_-_02_-_Mt_Fox_Shop.mp3'
+// sound.src = soundUrl
 
 
 let $counter = document.querySelector('h1 span');

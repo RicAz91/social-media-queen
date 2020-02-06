@@ -16,22 +16,21 @@ class Game {
   }
 
   loop(timestamp) {
-    console.log(this.likes);
     this.logic();
     this.paint();
-
     if (this.gameIsRunning) {
       window.requestAnimationFrame(timestamp => this.loop(timestamp));
     }
   }
 
   restart() {
+    this.openFullscreen();
     this.sCanvasBackground = new ScanvasBackground(this);
-    this.littleQueen = new SecondCanvasQueen(this)
+    this.littleQueen = new SecondCanvasQueen(this);
     this.queen = new Queen(this);
     this.background = new Background(this);
     this.paparazi = new Paparazi(this);
-    this.littlePaparazzi = new SecondCanvasPaparazzi(this)
+    this.littlePaparazzi = new SecondCanvasPaparazzi(this);
     $counter.innerText = 0;
     $counterF.innerText = 0;
     this.clickCounter = 0;
@@ -59,12 +58,12 @@ class Game {
   paint() {
     this.cleanCanvas();
     this.sCanvasBackground.paint();
-    this.littleQueen.paint()
-    this.littlePaparazzi.paint()
+    this.littleQueen.paint();
+    this.littlePaparazzi.paint();
 
     if (this.gameIsRunning) {
       this.background.paint();
-      if (this.followers < 100) {
+      if (this.followers < 1000) {
         this.queen.paint();
       } else {
         this.queen.paintC();
@@ -112,15 +111,16 @@ class Game {
   key() {
     window.addEventListener('keydown', event => {
       if (this.gameIsRunning) {
-        this.clickCounter++;
-        this.littleQueen.move()
-        this.littlePaparazzi.move()
-        console.log(this.clickCounter);
-        this.background.move();
-        for (let i = 0; i < this.obstacles.length; i++) {
-          this.obstacles[i].move();
+        switch (event.keyCode) {
+          case 32:
+            this.clickCounter++;
+            this.littleQueen.move();
+            this.littlePaparazzi.move();
+            this.background.move();
+            for (let i = 0; i < this.obstacles.length; i++) {
+              this.obstacles[i].move();
+            }
         }
-    
       }
     });
   }
@@ -131,5 +131,20 @@ class Game {
         this.queen.jumpF();
       }
     });
+  }
+  openFullscreen() {
+    var elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      /* Firefox */
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      /* Chrome, Safari and Opera */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      /* IE/Edge */
+      elem.msRequestFullscreen();
+    }
   }
 }

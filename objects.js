@@ -2,10 +2,10 @@ class Objects {
   constructor(x, game) {
     this.game = game;
     this.x = x;
-    this.y = Math.floor(Math.random() * 400);
+    this.y = Math.floor(Math.random() * 350);
     this.height = 75;
     this.width = 75;
-    this.obstaclesProb = [1, 1, 2, 3, 3, 1, 2, 1];
+    this.obstaclesProb = [1, 1, 2, 2,2, 3, 3, 1, 2, 1];
     this.oneRandObst = this.obstaclesProb[Math.floor(Math.random() * this.obstaclesProb.length)];
   }
 
@@ -29,7 +29,7 @@ class Objects {
       queenYplus > this.y + 75 &&
       this.oneRandObst === 1
     ) {
-      this.game.likes += 10;
+      this.game.likes += 100;
       $counter.innerText = this.game.likes;
       return true;
     } else if (
@@ -43,7 +43,7 @@ class Objects {
       queenYplus > this.y + 75 &&
       this.oneRandObst === 2
     ) {
-      this.game.followers -= 10;
+      this.game.followers -= 50;
       $counterF.innerText = this.game.followers;
       return true;
     } else if (
@@ -57,7 +57,7 @@ class Objects {
       queenYplus > this.y + 75 &&
       this.oneRandObst === 3
     ) {
-      this.game.followers += 10;
+      this.game.followers += 100;
       this.game.likes += 1000;
       $counter.innerText = this.game.likes;
       $counterF.innerText = this.game.followers;

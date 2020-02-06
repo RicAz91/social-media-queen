@@ -8,7 +8,7 @@ class Paparazi {
   }
 
   logic() {
-    let gain = 0.016;
+    let gain = 0.025;
     this.x += gain;
   }
 
