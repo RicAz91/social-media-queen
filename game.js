@@ -6,6 +6,7 @@ class Game {
     this.click();
     this.key();
     this.sound = new Audio('/sound/BoxCat_Games_-_02_-_Mt_Fox_Shop.mp3');
+    this.audioOnOff = false
     
   }
 
@@ -30,7 +31,6 @@ class Game {
 
   restart() {
     this.openFullscreen();
-    
     this.sCanvasBackground = new ScanvasBackground(this);
     this.littleQueen = new SecondCanvasQueen(this);
     this.queen = new Queen(this);
@@ -81,10 +81,12 @@ class Game {
       this.paparazi.paint();
     } else if (!this.gameIsRunning && this.clickCounter === this.winningObjective) {
       context.drawImage(winImg, 0, 0, 700, 500);
+      ctx.drawImage(gameOverBar,0,0,700,75)
     } else if (!this.gameIsRunning) {
       context.drawImage(gameOverImg, 0, 0, 700, 500);
+      ctx.drawImage(gameOverBar,0,0,700,75)
     }
-    // TODO - MISSING WINNING CONDITION PAINTING
+   
   }
 
   logic() {
@@ -115,6 +117,23 @@ class Game {
     ctx.clearRect(0, 0, context.canvas.width, context.canvas.height);
   };
 
+
+
+  // activateAudioOnOffKey = () => {
+    
+  //   document.getElementById('.sound').onclick = function() {
+  //     if (this.audioOnOff === true) {
+  //       this.sound.pause();
+  //       this.audioOnOff = false;
+  //     } else {
+  //       this.sound.play();
+  //       this.audioOnOff = true;
+  //     }
+  //   };
+  // };
+   
+
+  
   audio(){
     if(!this.gameIsRunning){
       this.sound.pause()
@@ -122,9 +141,9 @@ class Game {
       this.sound.play()
 
     }
-    
-  
   }
+  
+   
   key() {
     window.addEventListener('keydown', event => {
       if (this.gameIsRunning) {

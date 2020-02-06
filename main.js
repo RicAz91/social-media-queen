@@ -1,7 +1,7 @@
 function paintInst() {
   instImage.addEventListener('load', () => {
     context.drawImage(instImage, 0, 0, 700, 500);
-    ctx.drawImage(backgroundImage,0, 0)
+    ctx.drawImage(startBar, 0, 0);
   });
 }
 paintInst();
@@ -15,4 +15,3 @@ window.addEventListener('keydown', event => {
       break;
   }
 });
-

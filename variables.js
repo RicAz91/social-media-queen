@@ -4,15 +4,24 @@ const context = $canvas.getContext('2d');
 const $sCanvas = document.querySelector('.small-canvas');
 const ctx = $sCanvas.getContext('2d');
 
-// const $soundBotton = document.querySelector('.sound')
+const $soundBotton = document.querySelector('.sound');
 
 // const sound = new Sound();
 // const soundUrl = '/sound/BoxCat_Games_-_02_-_Mt_Fox_Shop.mp3';
 // sound.src = soundUrl;
 
-
 let $counter = document.querySelector('h1 span');
 let $counterF = document.querySelector('h1:nth-child(2) span');
+
+const gameOverBar = new Image();
+const gameOverBarURL = './images/try again.jpg'; //direction()
+gameOverBar.src = gameOverBarURL;
+
+const startBar = new Image();
+const startBarURL = './images/start button.jpg'; //direction()
+startBar.src = startBarURL;
+
+//
 
 const gameOverImg = new Image();
 const gameOverImgURL = './images/game over.jpg'; //direction()
