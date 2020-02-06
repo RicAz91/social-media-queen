@@ -6,7 +6,7 @@ class Queen {
     this.height = 170;
     this.gravity = 0.1;
     this.velocity = 0;
-    this.jumpForce = -5;
+    this.jumpForce = -2;
     this.conter = 0;
   }
 
@@ -49,4 +49,18 @@ class Queen {
   paintd() {
     context.drawImage(dqueenImage, this.x, this.y, 170, 170);
   }
+}
+
+class SecondCanvasQueen {
+  constructor (game){
+    this.x = 0
+    this.y = 25
+  }
+  move() {
+    this.x += 1.35;
+  }
+  paint(){
+    ctx.drawImage(queenImage,this.x,this.y, 50,50)
+  }
+  
 }

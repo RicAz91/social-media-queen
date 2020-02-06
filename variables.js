@@ -1,5 +1,12 @@
-const $canvas = document.querySelector('canvas');
+const $canvas = document.querySelector('.big-canvas');
 const context = $canvas.getContext('2d');
+
+const $sCanvas = document.querySelector('.small-canvas');
+const ctx = $sCanvas.getContext('2d');
+
+
+
+
 
 let $counter = document.querySelector('h1 span');
 let $counterF = document.querySelector('h1:nth-child(2) span');

@@ -30,3 +30,16 @@ class Paparazi {
     }
   }
 }
+
+class SecondCanvasPaparazzi {
+  constructor(game) {
+    this.x = -30;
+    this.y = 35;
+  }
+  move() {
+    this.x += 1.38;
+  }
+  paint() {
+    ctx.drawImage(paparaziImage, this.x, this.y, 30, 30);
+  }
+}

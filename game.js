@@ -2,8 +2,7 @@ class Game {
   constructor(game) {
     this.game = game;
     this.gameIsRunning = false;
-    this.winningObjective = 927;
-
+    this.winningObjective = 463;
     this.click();
     this.key();
   }
@@ -27,9 +26,12 @@ class Game {
   }
 
   restart() {
+    this.sCanvasBackground = new ScanvasBackground(this);
+    this.littleQueen = new SecondCanvasQueen(this)
     this.queen = new Queen(this);
     this.background = new Background(this);
     this.paparazi = new Paparazi(this);
+    this.littlePaparazzi = new SecondCanvasPaparazzi(this)
     $counter.innerText = 0;
     $counterF.innerText = 0;
     this.clickCounter = 0;
@@ -56,6 +58,10 @@ class Game {
 
   paint() {
     this.cleanCanvas();
+    this.sCanvasBackground.paint();
+    this.littleQueen.paint()
+    this.littlePaparazzi.paint()
+
     if (this.gameIsRunning) {
       this.background.paint();
       if (this.followers < 100) {
@@ -100,16 +106,21 @@ class Game {
 
   cleanCanvas = () => {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    ctx.clearRect(0, 0, context.canvas.width, context.canvas.height);
   };
 
   key() {
     window.addEventListener('keydown', event => {
       if (this.gameIsRunning) {
-        switch (event.keyCode) {
-          case 32:
-            this.queen.jumpF();
-            break;
+        this.clickCounter++;
+        this.littleQueen.move()
+        this.littlePaparazzi.move()
+        console.log(this.clickCounter);
+        this.background.move();
+        for (let i = 0; i < this.obstacles.length; i++) {
+          this.obstacles[i].move();
         }
+    
       }
     });
   }
@@ -117,11 +128,7 @@ class Game {
   click() {
     window.addEventListener('click', event => {
       if (this.gameIsRunning) {
-        this.clickCounter++;
-        this.background.move();
-        for (let i = 0; i < this.obstacles.length; i++) {
-          this.obstacles[i].move();
-        }
+        this.queen.jumpF();
       }
     });
   }
