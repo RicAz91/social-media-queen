@@ -31,6 +31,7 @@ class Objects {
     ) {
       this.game.likes += 100;
       $counter.innerText = this.game.likes;
+      this.game.fxsounds.like()
       return true;
     } else if (
       queenXplus > this.x &&
@@ -45,6 +46,7 @@ class Objects {
     ) {
       this.game.followers -= 50;
       $counterF.innerText = this.game.followers;
+      this.game.fxsounds.unlike()
       return true;
     } else if (
       queenXplus > this.x &&
@@ -61,6 +63,7 @@ class Objects {
       this.game.likes += 1000;
       $counter.innerText = this.game.likes;
       $counterF.innerText = this.game.followers;
+      this.game.fxsounds.like()
       return true;
     }
   }

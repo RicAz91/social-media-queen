@@ -19,6 +19,7 @@ class Paparazi {
     let paparaziY = this.y + this.height;
 
     if (queenX < paparaziX - 40) {
+      this.game.fxsounds.lose()
       this.game.gameOver();
     }
   }

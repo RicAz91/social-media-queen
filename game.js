@@ -7,6 +7,7 @@ class Game {
     this.key();
     this.sound = new Audio('/sound/BoxCat_Games_-_02_-_Mt_Fox_Shop.mp3');
     this.audioOnOff = false;
+    this.fxsounds = new Sounds();
   }
 
   startGame() {
@@ -78,6 +79,7 @@ class Game {
     } else if (!this.gameIsRunning && this.clickCounter === this.winningObjective) {
       context.drawImage(winImg, 0, 0, 700, 500);
       ctx.drawImage(gameOverBar, 0, 0, 700, 75);
+      this.game.fxsounds.win();
     } else if (!this.gameIsRunning) {
       context.drawImage(gameOverImg, 0, 0, 700, 500);
       ctx.drawImage(gameOverBar, 0, 0, 700, 75);
@@ -86,11 +88,12 @@ class Game {
 
   logic() {
     if (this.clickCounter === this.winningObjective) {
+      this.fxsounds.win();
       this.winGame();
     }
 
     if (this.followers < 0) {
-      console.log('gameOver');
+      this.fxsounds.lose();
       this.gameOver();
     }
 
