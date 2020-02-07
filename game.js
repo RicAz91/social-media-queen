@@ -6,12 +6,10 @@ class Game {
     this.click();
     this.key();
     this.sound = new Audio('/sound/BoxCat_Games_-_02_-_Mt_Fox_Shop.mp3');
-    this.audioOnOff = false
-    
+    this.audioOnOff = false;
   }
 
   startGame() {
-    
     this.restart();
     if (!this.gameIsRunning) {
       this.gameIsRunning = !this.gameIsRunning;
@@ -22,9 +20,8 @@ class Game {
   loop(timestamp) {
     this.logic();
     this.paint();
-    this.audio()
+    this.audio();
     if (this.gameIsRunning) {
-      
       window.requestAnimationFrame(timestamp => this.loop(timestamp));
     }
   }
@@ -47,7 +44,6 @@ class Game {
   }
 
   gameOver() {
-    
     this.gameIsRunning = !this.gameIsRunning;
   }
 
@@ -81,12 +77,11 @@ class Game {
       this.paparazi.paint();
     } else if (!this.gameIsRunning && this.clickCounter === this.winningObjective) {
       context.drawImage(winImg, 0, 0, 700, 500);
-      ctx.drawImage(gameOverBar,0,0,700,75)
+      ctx.drawImage(gameOverBar, 0, 0, 700, 75);
     } else if (!this.gameIsRunning) {
       context.drawImage(gameOverImg, 0, 0, 700, 500);
-      ctx.drawImage(gameOverBar,0,0,700,75)
+      ctx.drawImage(gameOverBar, 0, 0, 700, 75);
     }
-   
   }
 
   logic() {
@@ -117,10 +112,8 @@ class Game {
     ctx.clearRect(0, 0, context.canvas.width, context.canvas.height);
   };
 
-
-
   // activateAudioOnOffKey = () => {
-    
+
   //   document.getElementById('.sound').onclick = function() {
   //     if (this.audioOnOff === true) {
   //       this.sound.pause();
@@ -131,19 +124,15 @@ class Game {
   //     }
   //   };
   // };
-   
 
-  
-  audio(){
-    if(!this.gameIsRunning){
-      this.sound.pause()
-    } else{
-      this.sound.play()
-
+  audio() {
+    if (!this.gameIsRunning) {
+      this.sound.pause();
+    } else {
+      this.sound.play();
     }
   }
-  
-   
+
   key() {
     window.addEventListener('keydown', event => {
       if (this.gameIsRunning) {

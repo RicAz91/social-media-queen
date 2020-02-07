@@ -10,8 +10,8 @@ const $soundBotton = document.querySelector('.sound');
 // const soundUrl = '/sound/BoxCat_Games_-_02_-_Mt_Fox_Shop.mp3';
 // sound.src = soundUrl;
 
-let $counter = document.querySelector('h1 span');
-let $counterF = document.querySelector('h1:nth-child(2) span');
+let $counter = document.querySelector('h1:nth-child(2) span');
+let $counterF = document.querySelector('h1:nth-child(3) span');
 
 const gameOverBar = new Image();
 const gameOverBarURL = './images/try again.jpg'; //direction()
@@ -20,6 +20,7 @@ gameOverBar.src = gameOverBarURL;
 const startBar = new Image();
 const startBarURL = './images/start button.jpg'; //direction()
 startBar.src = startBarURL;
+
 
 //
 
